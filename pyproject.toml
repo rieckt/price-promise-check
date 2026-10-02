@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pricecheck-cli"
+version = "0.1.0"
+description = "Local MediaMarkt product search with evidence and comparison retailer discovery"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = []
+
+[project.scripts]
+pricecheck = "pricecheck_app.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["pricecheck_app*"]
+
+[tool.setuptools.package-data]
+pricecheck_app = ["data/*.json"]

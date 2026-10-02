@@ -1,0 +1,4 @@
+#!/usr/bin/env python3
+from pricecheck_app.cli import main
+
+raise SystemExit(main())

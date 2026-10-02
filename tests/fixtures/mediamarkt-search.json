@@ -1,0 +1,311 @@
+{
+  "source": "https://www.mediamarkt.de/de/search.html?query=dreame+r20",
+  "captured_on": "2026-10-02",
+  "note": "Public search data, reduced to four products and fields consumed by the parser",
+  "item_list": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Product",
+        "name": "DREAME R20 SE Stielsauger, Akkubetrieb, 425 Watt",
+        "image": "https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MP_175219560",
+        "offers": {
+          "@type": "Offer",
+          "price": 205.7,
+          "priceCurrency": "EUR"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": 4,
+          "reviewCount": 2
+        },
+        "url": "https://www.mediamarkt.de/de/product/_dreame-r20-se-stielsauger-akkubetrieb-425-watt-175219236.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Product",
+        "name": "DREAME R20 PRO Stielsauger, Akkubetrieb, 600 Watt",
+        "image": "https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_185208917",
+        "offers": {
+          "@type": "Offer",
+          "price": 349,
+          "priceCurrency": "EUR"
+        },
+        "url": "https://www.mediamarkt.de/de/product/_dreame-r20-pro-3059512.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Product",
+        "name": "DREAME R20 Stielsauger, Netz-/Batteriebetrieb, 570 Watt",
+        "image": "https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MP_144470999",
+        "offers": {
+          "@type": "Offer",
+          "price": 263.79,
+          "priceCurrency": "EUR"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": 4.3836,
+          "reviewCount": 73
+        },
+        "url": "https://www.mediamarkt.de/de/product/_dreame-r-20-stielsauger-akkubetrieb-296-volt-107780003.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Product",
+        "name": "DREAME R20 SLIM Kabelloser Staubsauger, Akkubetrieb, 610 Watt",
+        "image": "https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MP_176361935",
+        "offers": {
+          "@type": "Offer",
+          "price": 259,
+          "priceCurrency": "EUR"
+        },
+        "url": "https://www.mediamarkt.de/de/product/_dreame-r20-slim-besenstaubsauger-maximale-leistung-610-watt-grau-176361756.html"
+      }
+    }
+  ],
+  "apollo_state": {
+    "CofrCoreFeature:Media:de:175219236": {
+      "__typename": "CofrCoreFeature",
+      "id": "Media:de:175219236",
+      "ean": "6978515257568",
+      "isProductOfTypeMarketplace": true
+    },
+    "CofrPriceFeature:{\"id\":\"Media:de:175219236\",\"price\":{\"installment\":{\"__typename\":\"CofrPriceFeaturePriceInstallment\"}}}": {
+      "__typename": "CofrPriceFeature",
+      "id": "Media:de:175219236",
+      "currency": "EUR",
+      "isProductOfTypeMarketplace": true,
+      "marketplaceSeller": {
+        "__typename": "CofrMarketplaceOfferApiActiveOffer",
+        "sellerId": "4053",
+        "sellerName": "Digital Bay",
+        "sellerRating": 3.54
+      },
+      "price": {
+        "__typename": "CofrPriceFeaturePrice",
+        "amount": 205.7,
+        "baseAmountFormatted": null,
+        "discount": null,
+        "discountPercentage": null,
+        "installment": {
+          "__typename": "CofrPriceFeaturePriceInstallment",
+          "duration": 10,
+          "finalRate": null,
+          "interestEffective": 10.9,
+          "interestNominal": 10.39,
+          "interestTotal": 9.9,
+          "monthlyRate": 21.56,
+          "totalAmount": 215.6
+        },
+        "shippingCost": 0
+      },
+      "promoPrice": null,
+      "loyaltyPromoPrice": null
+    },
+    "CofrOnlineStatusFeature:Media:de:175219236": {
+      "__typename": "CofrOnlineStatusFeature",
+      "id": "Media:de:175219236",
+      "isAvailableAndBuyable": true,
+      "onlineStatus": "MP_OFFER"
+    },
+    "CofrRefurbishedGoodsFeature:Media:de:175219236": {
+      "__typename": "CofrRefurbishedGoodsFeature",
+      "id": "Media:de:175219236",
+      "offer": null
+    },
+    "CofrCoreFeature:Media:de:3059512": {
+      "__typename": "CofrCoreFeature",
+      "id": "Media:de:3059512",
+      "ean": "6979181924099",
+      "isProductOfTypeMarketplace": false
+    },
+    "CofrPriceFeature:{\"id\":\"Media:de:3059512\",\"price\":{\"installment\":{\"__typename\":\"CofrPriceFeaturePriceInstallment\"}}}": {
+      "__typename": "CofrPriceFeature",
+      "id": "Media:de:3059512",
+      "currency": "EUR",
+      "isProductOfTypeMarketplace": false,
+      "marketplaceSeller": null,
+      "price": {
+        "__typename": "CofrPriceFeaturePrice",
+        "amount": 349,
+        "baseAmountFormatted": null,
+        "discount": null,
+        "discountPercentage": null,
+        "installment": {
+          "__typename": "CofrPriceFeaturePriceInstallment",
+          "duration": 12,
+          "finalRate": null,
+          "interestEffective": 10.9,
+          "interestNominal": 10.39,
+          "interestTotal": 19.88,
+          "monthlyRate": 30.74,
+          "totalAmount": 368.88
+        },
+        "shippingCost": 4.99
+      },
+      "promoPrice": {
+        "__typename": "CofrPriceFeaturePromoPrice",
+        "amount": 349,
+        "baseAmountFormatted": null,
+        "customerSegment": null,
+        "discount": null,
+        "discountPercentage": null,
+        "installment": null,
+        "promoIds": [
+          "56fc69b2-d6a5-4d24-9c7d-740cd003c679",
+          "9f59912e-9856-4fe6-9cbc-e3d0cf8a6dd7"
+        ],
+        "shippingCost": 0
+      },
+      "loyaltyPromoPrice": {
+        "__typename": "CofrPriceFeaturePromoPrice",
+        "amount": 293.28,
+        "baseAmountFormatted": null,
+        "customerSegment": "Loyalty-Member",
+        "discount": null,
+        "discountPercentage": null,
+        "installment": null,
+        "promoIds": [
+          "be795f60-4345-4d84-890f-cd1d2d83dd96",
+          "56fc69b2-d6a5-4d24-9c7d-740cd003c679",
+          "9f59912e-9856-4fe6-9cbc-e3d0cf8a6dd7",
+          "922fd2ba-b187-4a78-9009-5f02e42e5ae2",
+          "8aae7bae-f179-4746-b667-bf129456091c"
+        ],
+        "shippingCost": 0
+      }
+    },
+    "CofrOnlineStatusFeature:Media:de:3059512": {
+      "__typename": "CofrOnlineStatusFeature",
+      "id": "Media:de:3059512",
+      "isAvailableAndBuyable": false,
+      "onlineStatus": "TEMPORARILY_NOT_AVAILABLE"
+    },
+    "CofrRefurbishedGoodsFeature:Media:de:3059512": {
+      "__typename": "CofrRefurbishedGoodsFeature",
+      "id": "Media:de:3059512",
+      "offer": null
+    },
+    "CofrCoreFeature:Media:de:107780003": {
+      "__typename": "CofrCoreFeature",
+      "id": "Media:de:107780003",
+      "ean": "6973734688032",
+      "isProductOfTypeMarketplace": true
+    },
+    "CofrPriceFeature:{\"id\":\"Media:de:107780003\",\"price\":{\"installment\":{\"__typename\":\"CofrPriceFeaturePriceInstallment\"}}}": {
+      "__typename": "CofrPriceFeature",
+      "id": "Media:de:107780003",
+      "currency": "EUR",
+      "isProductOfTypeMarketplace": true,
+      "marketplaceSeller": {
+        "__typename": "CofrMarketplaceOfferApiActiveOffer",
+        "sellerId": "4210",
+        "sellerName": "Media-Reich GmbH",
+        "sellerRating": 4.29
+      },
+      "price": {
+        "__typename": "CofrPriceFeaturePrice",
+        "amount": 263.79,
+        "baseAmountFormatted": null,
+        "discount": 135.21,
+        "discountPercentage": 33,
+        "installment": {
+          "__typename": "CofrPriceFeaturePriceInstallment",
+          "duration": 12,
+          "finalRate": null,
+          "interestEffective": 10.9,
+          "interestNominal": 10.39,
+          "interestTotal": 14.97,
+          "monthlyRate": 23.23,
+          "totalAmount": 278.76
+        },
+        "shippingCost": 4.99
+      },
+      "promoPrice": null,
+      "loyaltyPromoPrice": null
+    },
+    "CofrOnlineStatusFeature:Media:de:107780003": {
+      "__typename": "CofrOnlineStatusFeature",
+      "id": "Media:de:107780003",
+      "isAvailableAndBuyable": true,
+      "onlineStatus": "MP_OFFER"
+    },
+    "CofrRefurbishedGoodsFeature:Media:de:107780003": {
+      "__typename": "CofrRefurbishedGoodsFeature",
+      "id": "Media:de:107780003",
+      "offer": null
+    },
+    "CofrCoreFeature:Media:de:176361756": {
+      "__typename": "CofrCoreFeature",
+      "id": "Media:de:176361756",
+      "ean": "6978515254161",
+      "isProductOfTypeMarketplace": true
+    },
+    "CofrPriceFeature:{\"id\":\"Media:de:176361756\",\"price\":{\"installment\":{\"__typename\":\"CofrPriceFeaturePriceInstallment\"}}}": {
+      "__typename": "CofrPriceFeature",
+      "id": "Media:de:176361756",
+      "currency": "EUR",
+      "isProductOfTypeMarketplace": true,
+      "marketplaceSeller": {
+        "__typename": "CofrMarketplaceOfferApiActiveOffer",
+        "sellerId": "3154",
+        "sellerName": "MediaMarktSaturn geprüft",
+        "sellerRating": 4.34
+      },
+      "price": {
+        "__typename": "CofrPriceFeaturePrice",
+        "amount": 259,
+        "baseAmountFormatted": null,
+        "discount": null,
+        "discountPercentage": null,
+        "installment": {
+          "__typename": "CofrPriceFeaturePriceInstallment",
+          "duration": 12,
+          "finalRate": null,
+          "interestEffective": 10.9,
+          "interestNominal": 10.39,
+          "interestTotal": 14.72,
+          "monthlyRate": 22.81,
+          "totalAmount": 273.72
+        },
+        "shippingCost": 0
+      },
+      "promoPrice": null,
+      "loyaltyPromoPrice": null
+    },
+    "CofrOnlineStatusFeature:Media:de:176361756": {
+      "__typename": "CofrOnlineStatusFeature",
+      "id": "Media:de:176361756",
+      "isAvailableAndBuyable": true,
+      "onlineStatus": "MP_OFFER"
+    },
+    "CofrRefurbishedGoodsFeature:Media:de:176361756": {
+      "__typename": "CofrRefurbishedGoodsFeature",
+      "id": "Media:de:176361756",
+      "offer": {
+        "__typename": "CofrMarketplaceOfferApiActiveOffer",
+        "conditionType": "VERY_GOOD",
+        "offerId": "1849177405",
+        "priceAmount": 259,
+        "priceCurrency": "EUR"
+      }
+    },
+    "ROOT_QUERY": {
+      "searchV4:fixture": {
+        "__typename": "GraphqlSearchResult",
+        "totalProducts": 18
+      }
+    }
+  }
+}

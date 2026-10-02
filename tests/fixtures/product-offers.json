@@ -1,0 +1,191 @@
+{
+  "mediamarkt_r20": {
+    "source": "https://www.mediamarkt.de/de/product/_dreame-r-20-stielsauger-akkubetrieb-296-volt-107780003.html",
+    "captured_on": "2026-10-02",
+    "product": {
+      "@type": "Product",
+      "brand": {
+        "@type": "Brand",
+        "name": "DREAME"
+      },
+      "sku": "107780003",
+      "gtin13": "6973734688032",
+      "name": "DREAME R20 Stielsauger, Netz-/Batteriebetrieb, 570 Watt",
+      "url": "https://www.mediamarkt.de/de/product/_dreame-r-20-stielsauger-akkubetrieb-296-volt-107780003.html",
+      "offers": [
+        {
+          "@type": "Offer",
+          "price": 263.79,
+          "priceCurrency": "EUR",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.mediamarkt.de/de/product/_dreame-r-20-stielsauger-akkubetrieb-296-volt-107780003.html",
+          "seller": {
+            "@type": "Organization",
+            "name": "Media-Reich GmbH",
+            "id": "4210"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": {
+                "@type": "Country",
+                "name": "DE"
+              }
+            },
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": 4.99,
+              "currency": "EUR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 0,
+                "maxValue": 1,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 5,
+                "maxValue": 7,
+                "unitCode": "DAY"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "alternate_sharp": {
+    "source": "https://www.alternate.de/SHARP/R204WA-Mikrowelle/html/product/1724270",
+    "captured_on": "2026-10-02",
+    "product": {
+      "@type": "Product",
+      "name": "R204WA, Mikrowelle",
+      "brand": {
+        "@type": "Brand",
+        "name": "SHARP"
+      },
+      "sku": 1724270,
+      "gtin8": "4974019174815",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.alternate.de/SHARP/R204WA-Mikrowelle/html/product/1724270",
+        "priceCurrency": "EUR",
+        "price": "69.9",
+        "itemCondition": "NewCondition",
+        "availability": "InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "ALTERNATE GmbH"
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@Type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 0,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@Type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 4,
+              "unitCode": "DAY"
+            }
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "DE"
+          },
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "currency": "EUR",
+            "value": 7.99
+          }
+        }
+      }
+    }
+  },
+  "mediamarkt_miele": {
+    "source": "https://www.mediamarkt.de/de/product/_miele-guard-m1s8380-bodenstaubsauger-maximale-leistung-890-watt-2966535.html",
+    "captured_on": "2026-10-02",
+    "product": {
+      "@type": "ProductGroup",
+      "brand": {
+        "@type": "Brand",
+        "name": "MIELE"
+      },
+      "sku": "2966535",
+      "gtin13": "4002516847533",
+      "name": "MIELE GUARD M1S8380 Staubsauger, maximale Leistung: 890 Watt",
+      "url": "https://www.mediamarkt.de/de/product/_miele-guard-m1s8380-bodenstaubsauger-maximale-leistung-890-watt-2966535.html",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "EUR",
+        "price": 229,
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.mediamarkt.de/de/product/_miele-guard-m1s8380-bodenstaubsauger-maximale-leistung-890-watt-2966535.html",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": {
+              "@type": "Country",
+              "name": "DE"
+            }
+          },
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": 0,
+            "currency": "EUR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 4,
+              "unitCode": "DAY"
+            }
+          }
+        }
+      }
+    }
+  },
+  "galaxus_r20": {
+    "source": "https://www.galaxus.de/de/s2/product/dreame-r20-staubsauger-36108749",
+    "captured_on": "2026-10-02",
+    "capture_method": "public_browser_jsonld",
+    "product": {
+      "@type": "Product",
+      "name": "R20",
+      "sku": "36108749",
+      "gtin": "6973734688032",
+      "brand": {
+        "@type": "Brand",
+        "name": "Dreame"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": 229,
+        "priceCurrency": "EUR",
+        "availability": "InStock",
+        "itemCondition": "NewCondition",
+        "url": "https://www.galaxus.de/de/s2/product/dreame-r20-staubsauger-36108749"
+      }
+    }
+  }
+}

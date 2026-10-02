@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-02",
+  "policy_source": "https://faq.mediamarkt.de/app/answers/detail/a_id/21238/kw/Preisgarantie/related/1",
+  "market": {
+    "id": "475",
+    "name": "MediaMarkt Lübeck CITTI-PARK",
+    "address": "Herrenholz 14, 23556 Lübeck",
+    "coordinates": [53.85823, 10.62767],
+    "source": "https://www.mediamarkt.de/de/store/luebeck-475"
+  },
+  "online_domains": ["joybuy.de", "amazon.de", "otto.de", "cyberport.de", "alternate.de", "notebooksbilliger.de", "coolblue.de", "expert.de", "galaxus.de"],
+  "online_requirements": {
+    "direct_seller_only": true,
+    "immediately_available": true,
+    "delivery_within_days": 3,
+    "delivery_destination": "private_config_address",
+    "price_adapters": "registered_partial_schema_coverage"
+  },
+  "local_requirements": {
+    "radius_km": 30,
+    "radius_origin": "market",
+    "policy_distance_method": "not_specified",
+    "calculation_method": "haversine_air_distance",
+    "physical_price_evidence_required": true,
+    "self_taken_photos_accepted": false,
+    "catalogue_complete": false
+  },
+  "common_requirements": {
+    "purchase_channel": "physical_market",
+    "membership": "myMediaMarkt",
+    "identical_product": true,
+    "product_in_stock_at_market": true,
+    "exclusions": ["marketplace", "bundles", "financing_offers", "third_party_contracts", "digital_content_and_codes", "gift_and_prepaid_cards", "books_and_ebooks", "restricted_customer_or_payment_offers", "cross_retailer_shopping_events", "competitor_category_or_storewide_discount_campaigns", "vouchers", "additional_warranties", "food", "tchibo_cafissimo", "apple", "unpacked", "refurbished", "customer_returns", "personalized", "services", "shipping_costs", "obvious_price_errors"],
+    "eligibility_engine": "hard_exclusions_and_manual_review"
+  },
+  "geodata_source": "https://photon.komoot.io/ (OpenStreetMap address points, checked 2026-10-02)",
+  "distance_note": "Approximate address coordinates. Air distance is preliminary; stores near 30 km require manual verification of the market's interpretation.",
+  "local_candidates": [
+    {"name": "JessenLenz Zentrale", "address": "Steinmetzstraße 3, 23556 Lübeck", "coordinates": [53.8632044, 10.6175225], "source": "https://jessenlenz.eu/kontakt/", "focus": "IT; business and private pickup; retail offer must be checked"},
+    {"name": "media@home JessenLenz a/d/s", "address": "Wahmstraße 36, 23552 Lübeck", "coordinates": [53.8650852, 10.6879517], "source": "https://jessenlenz.eu/kontakt/", "focus": "HiFi and home entertainment"},
+    {"name": "JessenLenz Apple Premium Reseller", "address": "Hüxstraße 26, 23552 Lübeck", "coordinates": [53.8661051, 10.6876027], "source": "https://jessenlenz.eu/kontakt/", "focus": "Apple; Apple products excluded by the price promise"},
+    {"name": "EP:ElectronicPoint", "address": "Kantstraße 15-17, 23566 Lübeck", "coordinates": [53.8672249, 10.7210947], "source": "https://www.ep.de/electronicpoint", "focus": "Household appliances and consumer electronics"},
+    {"name": "Electro Schweim Ahrensbök", "address": "Plöner Straße 1, 23623 Ahrensbök", "coordinates": [54.0102063, 10.5730058], "source": "https://www.schweim.de/kontakt/", "focus": "Household appliances"},
+    {"name": "expert MegaLand Bad Oldesloe", "address": "Industriestraße 37, 23843 Bad Oldesloe", "coordinates": [53.8022619, 10.3987562], "source": "https://www.expert.de/eutin/Fachmarkt-waehlen", "focus": "Electronics and household appliances"},
+    {"name": "expert MegaLand Bad Segeberg", "address": "Eutiner Straße 26, 23795 Bad Segeberg", "coordinates": [53.9508183, 10.3130782], "source": "https://www.expert.de/eutin/Fachmarkt-waehlen", "focus": "Electronics and household appliances"},
+    {"name": "Electro Schweim Bad Segeberg", "address": "Eutiner Straße 20, 23795 Bad Segeberg", "coordinates": [53.9456004, 10.3067977], "coordinate_precision": "street", "source": "https://www.schweim.de/kontakt/", "focus": "Household appliances; street coordinates only, building not geocoded"},
+    {"name": "expert Neustadt", "address": "Sierksdorfer Straße 26, 23730 Neustadt in Holstein", "coordinates": [54.0950044, 10.7877367], "source": "https://www.expert.de/neustadt-nord", "focus": "Electronics and household appliances"},
+    {"name": "expert MegaLand Eutin", "address": "Johann-Specht-Straße 5-7, 23701 Eutin", "coordinates": [54.1279427, 10.6212337], "source": "https://www.expert.de/eutin/Fachmarkt-waehlen", "focus": "Electronics and household appliances; near radius boundary"}
+  ]
+}

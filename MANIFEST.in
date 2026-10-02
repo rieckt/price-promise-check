@@ -1,0 +1,6 @@
+include LICENSE README.md
+include skill/SKILL.md
+recursive-include skill/references *.js
+include scripts/check_public_tree.py
+recursive-include tests *.py *.json
+global-exclude *.pyc .env .env.* config.json config.local.json *.pem *.key
