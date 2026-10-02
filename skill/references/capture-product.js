@@ -13,19 +13,29 @@
   const walk = value => {
     if (Array.isArray(value)) return value.flatMap(walk);
     if (!value || typeof value !== "object") return [];
-    return [value, ...walk(value["@graph"]), ...walk(value.object)];
+    return [value, ...walk(value["@graph"]), ...walk(value.object), ...walk(value.mainEntity)];
+  };
+  const types = value => (Array.isArray(value) ? value : [value])
+    .filter(value => typeof value === "string").map(value => value.split("/").at(-1));
+  const bound = candidate => {
+    if (typeof candidate !== "string") return false;
+    const resolved = new URL(candidate, source);
+    resolved.search = "";
+    resolved.hash = "";
+    return resolved.href === source;
   };
   const products = Array.from(document.querySelectorAll('script[type="application/ld+json"]'))
     .flatMap(script => walk(JSON.parse(script.textContent)))
-    .filter(product => ["Product", "ProductGroup"].includes(product["@type"]))
+    .filter(product => types(product["@type"]).some(type => ["Product", "ProductGroup"].includes(type)))
     .filter(product => {
       const offers = Array.isArray(product.offers) ? product.offers : [product.offers];
-      return [product.url, ...offers.map(offer => offer?.url)].some(candidate => candidate === source);
+      return [product.url, product["@id"], ...offers.map(offer => offer?.url)].some(bound);
     });
   if (products.length !== 1) throw new Error("Missing or ambiguous product JSON-LD");
   const original = products[0];
   const offers = Array.isArray(original.offers) ? original.offers : [original.offers];
-  if (offers.some(offer => !offer || offer["@type"] !== "Offer")) throw new Error("Concrete offers required");
-  const product = {...pick(original, productFields), offers: offers.map(offer => pick(offer, offerFields))};
+  if (offers.some(offer => !offer || !types(offer["@type"]).includes("Offer"))) throw new Error("Concrete offers required");
+  const product = {...pick(original, productFields), url: source,
+    offers: offers.map(offer => pick(offer, offerFields))};
   return {schema_version: 1, captures: [{source, observed_at: new Date().toISOString(), product}]};
 })()

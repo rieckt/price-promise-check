@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import asdict, dataclass
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
 
 from .adapters.http import SourceError, validate_url
 from .adapters.mediamarkt import Scripts, money
@@ -30,13 +30,17 @@ def schema_name(value):
     return value.rsplit("/", 1)[-1] if isinstance(value, str) else None
 
 
+def schema_types(value):
+    return {schema_name(item) for item in value} if isinstance(value, list) else {schema_name(value)}
+
+
 def nodes(value):
     if isinstance(value, list):
         for child in value:
             yield from nodes(child)
     elif isinstance(value, dict):
         yield value
-        for field in ("@graph", "object"):
+        for field in ("@graph", "object", "mainEntity"):
             yield from nodes(value.get(field))
 
 
@@ -107,11 +111,11 @@ def parse_product(html, url, retailer):
     for attrs, content in parser.scripts:
         if attrs.get("type") == "application/ld+json":
             for node in nodes(json.loads(content)):
-                if node.get("@type") in ("Product", "ProductGroup"):
+                if schema_types(node.get("@type")) & {"Product", "ProductGroup"}:
                     offers = node.get("offers")
                     offers = offers if isinstance(offers, list) else [offers]
-                    urls = [node.get("url")] + [o.get("url") for o in offers if isinstance(o, dict)]
-                    if any(isinstance(u, str) and urlsplit(u)._replace(query="", fragment="")
+                    urls = [node.get("url"), node.get("@id")] + [o.get("url") for o in offers if isinstance(o, dict)]
+                    if any(isinstance(u, str) and urlsplit(urljoin(url, u))._replace(query="", fragment="")
                            == urlsplit(url)._replace(query="", fragment="") for u in urls):
                         products.append(node)
     if len(products) != 1:
@@ -119,6 +123,12 @@ def parse_product(html, url, retailer):
     product = products[0]
     ean = next((product.get(k) for k in ("gtin", "gtin13", "gtin14", "gtin12", "gtin8")
                 if product.get(k) is not None), None)
+    published_gtin = ean
+    restored = (retailer == "galaxus" and product.get("gtin") == ean and isinstance(ean, str)
+                and re.fullmatch(r"\d{11}", ean, re.ASCII) is not None)
+    if restored:
+        # Galaxus's generic GTIN field drops the initial zero of some UPC-A codes.
+        ean = "0" + ean
     code = gtin(ean)
     name = product.get("name")
     if not isinstance(name, str) or not name.strip():
@@ -131,9 +141,11 @@ def parse_product(html, url, retailer):
         raise SourceError("Concrete offer missing")
     results = []
     for raw in raw_offers:
-        if not isinstance(raw, dict) or raw.get("@type") != "Offer":
+        if not isinstance(raw, dict) or "Offer" not in schema_types(raw.get("@type")):
             raise SourceError("Concrete offer missing; aggregate prices cannot be compared")
         offer_url = raw.get("url", url)
+        if isinstance(offer_url, str):
+            offer_url = urljoin(url, offer_url)
         validate_url(offer_url, host)
         if urlsplit(offer_url).path != urlsplit(url).path:
             raise SourceError("Offer belongs to a different product URL")
@@ -157,4 +169,7 @@ def parse_product(html, url, retailer):
                              offer_url, money(raw.get("price")), raw.get("priceCurrency"),
                              shipping, seller, kind, condition, availability,
                              delivery_window(details)).to_dict())
+        if restored:
+            results[-1].update(published_gtin=published_gtin,
+                               gtin_normalization="galaxus_leading_zero_restored")
     return {"name": name, "brand": brand, "gtin": code, "ean": ean, "url": url, "offers": results}

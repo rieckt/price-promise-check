@@ -32,6 +32,37 @@ def parsed(key):
 
 
 class OfferContract(unittest.TestCase):
+    def test_galaxus_truncated_upc_restores_only_leading_zero_with_provenance(self):
+        fixture = copy.deepcopy(FIXTURES["galaxus_r20"])
+        fixture["product"]["gtin"] = "45496453435"
+        result = parse_product(product_page(fixture["product"]), fixture["source"], "galaxus")
+        self.assertEqual(result["gtin"], gtin("0045496453435"))
+        offer = result["offers"][0]
+        self.assertEqual(offer["published_gtin"], "45496453435")
+        self.assertEqual(offer["gtin_normalization"], "galaxus_leading_zero_restored")
+        for value in ["45496453436", "4549645343", 45496453435]:
+            fixture["product"]["gtin"] = value
+            with self.subTest(value=value), self.assertRaises(SourceError):
+                parse_product(product_page(fixture["product"]), fixture["source"], "galaxus")
+        fixture = copy.deepcopy(FIXTURES["alternate_sharp"])
+        fixture["product"]["gtin13"] = "45496453435"
+        with self.assertRaises(SourceError):
+            parse_product(product_page(fixture["product"]), fixture["source"], "alternate")
+
+    def test_product_id_type_array_and_relative_links_keep_source_binding(self):
+        fixture = copy.deepcopy(FIXTURES["galaxus_r20"])
+        product = fixture["product"]
+        product["@type"] = ["Product", "Thing"]
+        product["@id"] = fixture["source"]
+        product.pop("url", None)
+        product["offers"]["url"] = fixture["source"].split("www.galaxus.de", 1)[1]
+        result = parse_product(product_page({"@type": "WebPage", "mainEntity": product}), fixture["source"], "galaxus")
+        self.assertEqual(result["offers"][0]["url"], fixture["source"])
+        product["@id"] = "https://evil.test/product"
+        product["offers"]["url"] = "https://evil.test/product"
+        with self.assertRaises(SourceError):
+            parse_product(product_page(product), fixture["source"], "galaxus")
+
     def test_galaxus_public_metadata_does_not_prove_seller_or_delivery(self):
         offer = parsed("galaxus_r20")["offers"][0]
         self.assertEqual(offer["gtin"], parsed("mediamarkt_r20")["gtin"])

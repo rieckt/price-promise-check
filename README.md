@@ -2,7 +2,7 @@
 
 Eine lokale Open-Source-CLI zur MediaMarkt-Produktsuche und zur Vorbereitung eines nachvollziehbaren Preisvergleichs. Python 3.11+, MIT-lizenziert, ohne zusätzliche Laufzeitabhängigkeiten. Ein optionaler Codex-Skill verbindet die CLI mit dem Gespräch.
 
-**Status: frühe Version 0.1.0.** Suche und Händlerkatalog funktionieren; Konkurrenzpreise werden mit sichtbarer Teilabdeckung geprüft. Bestand im gewählten Markt und Anerkennung des Preisversprechens bleiben manuell zu prüfen. Das öffentliche Repository ist [price-promise-check](https://github.com/rieckt/price-promise-check); ein PyPI-Paket ist nicht veröffentlicht. Der Paketname in den Metadaten ist keine Aussage über seine Verfügbarkeit auf PyPI. Das Projekt ist unabhängig von MediaMarkt, Saturn und den genannten Händlern.
+**Status: frühe Version 0.1.1.** Suche und Händlerkatalog funktionieren; Konkurrenzpreise werden mit sichtbarer Teilabdeckung geprüft. Bestand im gewählten Markt und Anerkennung des Preisversprechens bleiben manuell zu prüfen. Das öffentliche Repository ist [price-promise-check](https://github.com/rieckt/price-promise-check); ein PyPI-Paket ist nicht veröffentlicht. Der Paketname in den Metadaten ist keine Aussage über seine Verfügbarkeit auf PyPI. Das Projekt ist unabhängig von MediaMarkt, Saturn und den genannten Händlern.
 
 ## Inhalt
 
@@ -179,7 +179,9 @@ pricecheck compare "MEDIA_MARKT_PRODUCT_URL" --browser-evidence /private/path/ev
 pricecheck compare "MEDIA_MARKT_PRODUCT_URL" --browser-evidence - --json < /private/path/evidence.json
 ```
 
-Der Importvertrag ist `{"schema_version": 1, "captures": [{"source": "CANONICAL_PRODUCT_URL", "observed_at": "ISO_TIMESTAMP_WITH_TIMEZONE", "product": {"@type": "Product", "name": "…", "gtin": "…", "offers": []}}]}`. Das ist eine Schemaillustration; der tatsächliche Beleg braucht eine gültige GTIN und mindestens ein konkretes Angebot. Den vollständigen Datensatz erzeugt das Capture-Skript. Maximal zwölf Belege insgesamt, 128 KB je Eingabedatei, höchstens 15 Minuten alt und maximal 60 Sekunden in der Zukunft. Quellen sind auf kanonische Alternate-/Galaxus-Produktpfade begrenzt. Doppelte Quellen/JSON-Schlüssel, unbekannte Envelope-/Produktfelder und fehlende Identität werden abgewiesen.
+Der Importvertrag ist `{"schema_version": 1, "captures": [{"source": "CANONICAL_PRODUCT_URL", "observed_at": "ISO_TIMESTAMP_WITH_TIMEZONE", "product": {"@type": "Product", "name": "…", "gtin": "…", "offers": []}}]}`. Das ist eine Schemaillustration; der tatsächliche Beleg braucht eine gültige GTIN und mindestens ein konkretes Angebot. Den vollständigen Datensatz erzeugt das Capture-Skript. Maximal zwölf Belege insgesamt, 128 KB je Eingabedatei, höchstens 15 Minuten alt und maximal 60 Sekunden in der Zukunft. Quellen sind auf die kanonischen Produktpfade der unterstützten Händler beschränkt; Joybuy besitzt noch keinen verifizierten Produktpfad. Doppelte Quellen/JSON-Schlüssel, unbekannte Envelope-/Produktfelder und fehlende Identität werden abgewiesen.
+
+Produktgebundene JSON-LD-Kennungen über `@id`, Typ-Arrays, `mainEntity` und relative Angebotslinks werden unterstützt. Andere Hosts und abweichende Produktpfade bleiben ausgeschlossen. Galaxus veröffentlicht bei manchen UPC-A-Produkten die generische `gtin` ohne führende Null. Ausschließlich eine elfstellige Zeichenfolge in diesem Galaxus-Feld wird um eine Null ergänzt und anschließend auf gültige Länge und Prüfziffer geprüft. `published_gtin` und `gtin_normalization: galaxus_leading_zero_restored` kennzeichnen diesen Fall im Angebot. Die allgemeine GTIN-Eingabe bleibt strikt; fehlende Kennungen werden nicht aus Produktnamen oder Artikelnummern abgeleitet.
 
 `browser_checked` bestätigt einen validierten Import. `evidence: browser_jsonld`, Angebots-`observed_at`, `evidence_sha256` und `capture_trust: user_or_agent_supplied_not_authenticated` kennzeichnen die Herkunft. Der Hash identifiziert den importierten Inhalt; er beweist nicht, dass der Händler ihn veröffentlicht hat. Auch KI kann falsche Daten liefern: GTIN, Quellenbindung, Format und Frische werden geprüft, fehlende Verkäufer-/Liefernachweise bleiben offen. Browserimporte ersetzen für diesen Händler die HTTP-Suche, nicht die Prüfung anderer Händler. Bei zusätzlichen `--offer-url` müssen die Quellen übereinstimmen.
 
@@ -291,8 +293,8 @@ python scripts/check_public_tree.py
 Der Check liest Git-sichtbare Dateien einschließlich unversionierter, nicht ignorierter Dateien. Er prüft Dateinamen, typische Credential-Muster und persönliche absolute Benutzerpfade. Existiert eine lokale private Konfiguration, vergleicht er deren relevante private Werte ausschließlich im Arbeitsspeicher mit öffentlichen Dateien. Er meldet Dateinamen und Fehlerarten, keine gefundenen Werte. Künstliche Tests belegen, dass die Erkennung anschlägt.
 
 ```sh
-python scripts/check_public_tree.py --artifact dist/pricecheck_cli-0.1.0-py3-none-any.whl
-python scripts/check_public_tree.py --artifact dist/pricecheck_cli-0.1.0.tar.gz
+python scripts/check_public_tree.py --artifact dist/pricecheck_cli-0.1.1-py3-none-any.whl
+python scripts/check_public_tree.py --artifact dist/pricecheck_cli-0.1.1.tar.gz
 ```
 
 Dateinamen mit dem tatsächlichen Build abgleichen. Archive werden gelesen, nicht entpackt. Paketmetadaten erlauben nur `pricecheck_app` als Python-Paket; private Konfigurationen sind keine Paketdaten. Der Skill im Quellarchiv enthält portable Befehle.
@@ -555,8 +557,8 @@ Live-Ergebnisse sind zeitabhängig. Linux-/Windows-CI, eigener Formatter/Linter,
 ```sh
 python -m pip install build
 python -m build
-python scripts/check_public_tree.py --artifact dist/pricecheck_cli-0.1.0-py3-none-any.whl
-python scripts/check_public_tree.py --artifact dist/pricecheck_cli-0.1.0.tar.gz
+python scripts/check_public_tree.py --artifact dist/pricecheck_cli-0.1.1-py3-none-any.whl
+python scripts/check_public_tree.py --artifact dist/pricecheck_cli-0.1.1.tar.gz
 ```
 
 `build` und Setuptools sind Build-Werkzeuge, keine Laufzeitabhängigkeiten der CLI. Ihre Versionen sind derzeit nicht eingefroren; byteidentische Builds werden nicht behauptet. Archivmitglieder und verwendete Werkzeugversionen vor Release prüfen. Das Wheel in einer frischen Umgebung außerhalb des Checkouts installieren und `pricecheck --help`/`pricecheck shops --json` testen, damit fehlende Paketdaten nicht vom Checkout verdeckt werden.
